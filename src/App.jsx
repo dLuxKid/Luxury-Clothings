@@ -1,13 +1,14 @@
-import { useState } from "react";
 import "./App.css";
 import Navbar from "./components/Navbar";
-import Homepage from "./pages/Homepage";
+import Routers from "./Routers/Routers";
+import Footer from "./components/Footer";
 
 function App() {
   return (
     <main className="max-w-full">
       <Navbar />
-      <Homepage />
+      <Routers />
+      <Footer />
     </main>
   );
 }

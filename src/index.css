@@ -17,13 +17,23 @@
   padding: 0;
   box-sizing: border-box;
   /* outline: 1px solid red; */
+  scrollbar-width: 0;
+}
+
+*::-webkit-scrollbar {
+  width: 0;
+}
+
+*::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0);
 }
 
 a {
-  font-weight: 500;
   text-decoration: inherit;
-}
-a:hover {
 }
 
 button {
@@ -36,8 +46,4 @@ button {
 }
 button:hover {
   border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
 }
