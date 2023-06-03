@@ -1,10 +1,16 @@
 import React from "react";
 import { Icon } from "@iconify/react";
 import { NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
+import useAuth from "../hooks/useAuth";
 
 const Navbar = () => {
   const navMenu =
     "font-light p-[2px] md:font-medium text-sm sm:text-base md:text-lg lg:text-xl hover:border-b-2 hover:border-black duration-200 ease-in-out cursor-pointer";
+
+  const user = useSelector((state) => state.auth.user);
+
+  const { Logout } = useAuth();
 
   return (
     <nav className="w-full">
@@ -19,12 +25,18 @@ const Navbar = () => {
           <li className={navMenu}>
             <NavLink to="/contact">CONTACT</NavLink>
           </li>
-          <li className={navMenu}>
-            <NavLink to="/authentication">SIGN IN</NavLink>
-          </li>
+          {user?.uid ? (
+            <li className={navMenu} onClick={() => Logout()}>
+              SIGN OUT
+            </li>
+          ) : (
+            <li className={navMenu}>
+              <NavLink to="/authentication">SIGN IN</NavLink>
+            </li>
+          )}
 
           <li
-            className={`font-bold md:font-extrabold text-lg sm:text-xl md:text-2xl lg:text-3xl relative cursor-pointer`}
+            className={`font-bold md:font-extrabold text-xl md:text-2xl lg:text-3xl relative cursor-pointer`}
           >
             <Icon icon="ph:bag-light" />
             <span className="absolute top-0 right-0 left-0 bottom-0  text-[10px] md:text-xs flex items-center justify-center text-center">

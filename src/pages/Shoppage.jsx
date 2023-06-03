@@ -1,8 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 import SHOP_DATA from "../assets/data/shopData";
-import PreviewCollections from "../components/previewCollections";
+import PreviewCollections from "../components/PreviewCollections";
 
 const Shoppage = () => {
+  document.title = "Shoppage";
+  useEffect(() => {
+    document.body.style.zoom = "100%";
+    window.scrollTo(0, 0);
+  });
+
   return (
     <section className="px-[5%] py-[2.5%]">
       <div className="flex flex-col gap-6 ">
@@ -15,6 +21,7 @@ const Shoppage = () => {
             title={data.title}
             routeName={data.routeName}
             items={data.items}
+            preview={true}
           />
         ))}
       </div>
