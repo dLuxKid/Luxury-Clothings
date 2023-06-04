@@ -1,6 +1,9 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../redux store/cartStore/cartSlice";
 
 const ShopItem = ({ item, preview }) => {
+  const dispatch = useDispatch();
   return (
     <div
       key={item.id}
@@ -12,7 +15,10 @@ const ShopItem = ({ item, preview }) => {
       />
 
       {!preview && (
-        <button className="bg-white text-black border-[1px] w-[80%] flex self-center uppercase justify-center absolute bottom-[20%] font-medium md:font-semibold text-sm sm:text-base md:text-lg lg:text-xl duration-1000 ease-in-out">
+        <button
+          onClick={() => dispatch(addToCart(item))}
+          className="hover:bg-white hover:text-black text-white bg-black hover:border-0 border-[1px] w-[80%] flex self-center uppercase justify-center absolute bottom-[20%] font-medium md:font-semibold text-sm sm:text-base md:text-lg lg:text-xl duration-1000 ease-in-out"
+        >
           Add to cart
         </button>
       )}

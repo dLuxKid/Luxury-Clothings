@@ -15,7 +15,7 @@ function App() {
     document.body.style.zoom = "100%";
     window.scrollTo(0, 0);
     checkAuthState();
-  }, [authChecked]);
+  }, []);
 
   if (!authChecked) {
     return null;
