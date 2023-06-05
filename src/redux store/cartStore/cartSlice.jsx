@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSelector, createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   showCart: false,
@@ -23,7 +23,7 @@ export const cartSlice = createSlice({
       if (existingItem) {
         // if already in cart, update quantity value
         const updatedCartItems = state.cartItems.map((item) =>
-          item.id === existingItem.id
+          item.id === action.payload.id
             ? { ...item, quantity: item.quantity + 1 }
             : item
         );
@@ -43,8 +43,28 @@ export const cartSlice = createSlice({
         cartItems: [...state.cartItems, { ...action.payload, quantity: 1 }],
       };
     },
-    // function to remove from cart
     removeFromCart: (state, action) => {
+      // check if item is in cart
+      const existingItem = state.cartItems.find(
+        (item) => item.id === action.payload.id
+      );
+      // if exists
+      if (existingItem) {
+        // remove from cart
+        const updatedItems = state.cartItems.filter(
+          (item) => item.id !== action.payload.id
+        );
+
+        // return updated state
+        return {
+          ...state,
+          totalQuantity: state.totalQuantity - existingItem.quantity,
+          cartItems: updatedItems,
+        };
+      }
+    },
+
+    reduceFromCart: (state, action) => {
       // check if item is in cart
       const existingItem = state.cartItems.filter(
         (item) => item.id === action.payload.id
@@ -52,10 +72,11 @@ export const cartSlice = createSlice({
       // if item is in cart
       if (existingItem) {
         // and the quantity is 0 remove from cart
-        if (existingItem.quantity === 0) {
+        if (action.payload.quantity === 1) {
           const updatedItems = state.cartItems.filter(
-            (item) => item.id !== existingItem.id
+            (item) => item.id !== action.payload.id
           );
+
           // return updated cart
           return {
             ...state,
@@ -66,9 +87,10 @@ export const cartSlice = createSlice({
         // reduce the quantity number
         const updatedItems = state.cartItems.map((item) =>
           item.id === action.payload.id
-            ? { ...item, quantity: quantity - 1 }
+            ? { ...item, quantity: item.quantity - 1 }
             : item
         );
+
         // return updated state
         return {
           ...state,
@@ -84,6 +106,7 @@ export const cartSlice = createSlice({
   },
 });
 
-export const { toggleCartDropdown, addToCart } = cartSlice.actions;
+export const { toggleCartDropdown, addToCart, reduceFromCart, removeFromCart } =
+  cartSlice.actions;
 
 export default cartSlice.reducer;

@@ -11,7 +11,7 @@ const AuthenticationPage = () => {
 
   const [mode, setMode] = useState("login");
   return (
-    <section className="p-[5%] w-full">
+    <section className="p-[5%] w-full h-screen">
       <div className="flex justify-center items-center gap-8 w-full p-2 mb-6">
         <h3
           onClick={() => setMode("login")}

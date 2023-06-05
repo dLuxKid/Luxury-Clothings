@@ -12,9 +12,15 @@ const CartDropdown = () => {
   return (
     <div className="absolute w-60 h-96 flex flex-col p-5 border-[1px] border-black bg-white top-20 right-[5%] z-[100]">
       <div className="h-60 flex flex-col overflow-scroll">
-        {cartItems.map((cartItem) => (
-          <CartItem key={cartItem.id} item={cartItem} />
-        ))}
+        {cartItems.length ? (
+          cartItems.map((cartItem) => (
+            <CartItem key={cartItem.id} item={cartItem} />
+          ))
+        ) : (
+          <p className="font-normal md:font-medium text-xs sm:text-base md:text-lg text-center uppercase">
+            Your cart is empty
+          </p>
+        )}
       </div>
       <button
         className="mt-auto font-normal md:font-medium text-xs sm:text-base md:text-lg text-white bg-black hover:bg-white hover:text-black"

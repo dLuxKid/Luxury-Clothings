@@ -17,19 +17,11 @@
   padding: 0;
   box-sizing: border-box;
   /* outline: 1px solid red; */
-  scrollbar-width: 0;
 }
 
 *::-webkit-scrollbar {
   width: 0;
-}
-
-*::-webkit-scrollbar-track {
-  background-color: transparent;
-}
-
-*::-webkit-scrollbar-thumb {
-  background-color: rgba(0, 0, 0, 0);
+  height: 0;
 }
 
 a {
@@ -47,10 +39,12 @@ button:hover {
   border-color: #000;
 }
 
-.bgImg button {
-  display: none;
-}
+@media screen and (min-width: 1024px) {
+  .bgImg button {
+    display: none;
+  }
 
-.bgImg:hover button {
-  display: block;
+  .bgImg:hover button {
+    display: block;
+  }
 }
