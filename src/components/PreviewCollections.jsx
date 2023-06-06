@@ -1,5 +1,5 @@
 import React from "react";
-import ShopItem from "./shopItem";
+import ShopItem from "./ShopItem";
 import { NavLink } from "react-router-dom";
 
 const PreviewCollections = ({ title, routeName, items, preview }) => {
