@@ -44,61 +44,46 @@ export const cartSlice = createSlice({
       };
     },
     removeFromCart: (state, action) => {
-      // check if item is in cart
-      const existingItem = state.cartItems.find(
-        (item) => item.id === action.payload.id
+      // remove from cart
+      const updatedItems = state.cartItems.filter(
+        (item) => item.id !== action.payload.id
       );
-      // if exists
-      if (existingItem) {
-        // remove from cart
+
+      // return updated state
+      return {
+        ...state,
+        totalQuantity: state.totalQuantity - action.payload.quantity,
+        cartItems: updatedItems,
+      };
+    },
+
+    reduceFromCart: (state, action) => {
+      // if quantity is 1 remove from cart
+      if (action.payload.quantity === 1) {
         const updatedItems = state.cartItems.filter(
           (item) => item.id !== action.payload.id
         );
 
-        // return updated state
-        return {
-          ...state,
-          totalQuantity: state.totalQuantity - existingItem.quantity,
-          cartItems: updatedItems,
-        };
-      }
-    },
-
-    reduceFromCart: (state, action) => {
-      // check if item is in cart
-      const existingItem = state.cartItems.filter(
-        (item) => item.id === action.payload.id
-      );
-      // if item is in cart
-      if (existingItem) {
-        // and the quantity is 0 remove from cart
-        if (action.payload.quantity === 1) {
-          const updatedItems = state.cartItems.filter(
-            (item) => item.id !== action.payload.id
-          );
-
-          // return updated cart
-          return {
-            ...state,
-            totalQuantity: state.totalQuantity - 1,
-            cartItems: updatedItems,
-          };
-        }
-        // reduce the quantity number
-        const updatedItems = state.cartItems.map((item) =>
-          item.id === action.payload.id
-            ? { ...item, quantity: item.quantity - 1 }
-            : item
-        );
-
-        // return updated state
+        // return updated cart
         return {
           ...state,
           totalQuantity: state.totalQuantity - 1,
           cartItems: updatedItems,
         };
       }
-      return state;
+      // reduce the quantity number
+      const updatedItems = state.cartItems.map((item) =>
+        item.id === action.payload.id
+          ? { ...item, quantity: item.quantity - 1 }
+          : item
+      );
+
+      // return updated state
+      return {
+        ...state,
+        totalQuantity: state.totalQuantity - 1,
+        cartItems: updatedItems,
+      };
     },
     clearCart: (state) => {
       return { ...state, cartItems: [] };

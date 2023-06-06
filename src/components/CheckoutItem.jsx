@@ -11,7 +11,7 @@ const CheckoutItem = ({ item }) => {
   const { imageUrl, name, quantity, price, id } = item;
   const dispatch = useDispatch();
   return (
-    <div className="flex min-h-[100px] border-b-[1px] border-slate-500 py-4 px-0 items-center ">
+    <div className="flex min-h-[100px] w-full border-b-[1px] border-slate-500 py-4 px-0 items-center ">
       <div className="w-[23%] pr-3">
         <img src={imageUrl} alt={name} className="w-full h-full" />
       </div>

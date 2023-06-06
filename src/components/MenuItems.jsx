@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 
-const MenuItems = ({ bgImg, title, size }) => {
+const MenuItems = ({ bgImg, title, size, linkUrl }) => {
   const navigate = useNavigate();
 
   return (
@@ -17,7 +17,7 @@ const MenuItems = ({ bgImg, title, size }) => {
       ></div>
       <div
         className="bg-white opacity-90 flex flex-col items-center justify-center h-24 p-6 z-50 cursor-pointer"
-        onClick={() => navigate("/shop")}
+        onClick={() => navigate(`/shop/${linkUrl}`)}
       >
         <h1 className="text-gray-600 font-semibold md:font-bold text-base sm:text-lg md:text-xl lg:text-2xl">
           {title}
