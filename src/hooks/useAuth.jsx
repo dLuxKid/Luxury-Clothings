@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+// REACT
+import { useState } from "react";
+// FIREBASE
 import {
   createUserWithEmailAndPassword,
   onAuthStateChanged,
@@ -7,6 +9,7 @@ import {
   updateCurrentUser,
 } from "firebase/auth";
 import { auth } from "../firebase/firebase";
+// REDUX
 import { useDispatch } from "react-redux";
 import {
   login,
@@ -19,6 +22,7 @@ const useAuth = () => {
   const [error, setError] = useState(null);
   const [pending, setPending] = useState(false);
   const [success, setSuccess] = useState(false);
+
   const dispatch = useDispatch();
 
   //   Signup function

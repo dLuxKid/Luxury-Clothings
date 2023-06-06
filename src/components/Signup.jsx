@@ -1,7 +1,10 @@
+// REACT
 import React, { useEffect, useReducer } from "react";
-import useAuth from "../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
+// HOOK
+import useAuth from "../hooks/useAuth";
 
+// STATE
 const initialState = {
   username: "",
   email: "",
@@ -9,12 +12,14 @@ const initialState = {
   confirmPassword: "",
 };
 
+// REDUCER
 const reducer = (state, action) => {
   return { ...state, [action.name]: action.value };
 };
 
 const Signup = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
+
   const navigate = useNavigate();
 
   const { Signup, pending, error, setError, success } = useAuth();
@@ -34,6 +39,9 @@ const Signup = () => {
     }
     if (state.username && state.email && state.password) {
       Signup(state.email, state.password, state.username);
+    } else {
+      setError("No value in input fields");
+      return;
     }
   };
 

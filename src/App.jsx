@@ -1,11 +1,14 @@
-import "./App.css";
+// REACT
+import { useEffect } from "react";
+import { BrowserRouter } from "react-router-dom";
+// COMPONENT
 import Navbar from "./components/Navbar";
 import Routers from "./routing/Routers";
 import Footer from "./components/Footer";
+// HOOK
 import useAuth from "./hooks/useAuth";
-import { useEffect } from "react";
+// REDUX
 import { useSelector } from "react-redux";
-import { BrowserRouter } from "react-router-dom";
 
 function App() {
   const { checkAuthState } = useAuth();

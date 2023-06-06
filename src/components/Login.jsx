@@ -1,18 +1,23 @@
+// REACR
 import React, { useReducer, useEffect } from "react";
-import useAuth from "../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
+// HOOKS
+import useAuth from "../hooks/useAuth";
 
+// STATE
 const initialState = {
   email: "",
   password: "",
 };
 
+// REDUCER FUNCTION
 const reducer = (state, action) => {
   return { ...state, [action.name]: action.value };
 };
 
 const Login = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
+
   const navigate = useNavigate();
 
   const { Login, pending, error, success } = useAuth();
@@ -28,6 +33,9 @@ const Login = () => {
     e.preventDefault();
     if (state.email && state.password) {
       Login(state.email, state.password);
+    } else {
+      setError("No value in input fields");
+      return;
     }
   };
 

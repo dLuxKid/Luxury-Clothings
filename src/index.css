@@ -39,6 +39,12 @@ button:hover {
   border-color: #000;
 }
 
+section {
+  min-height: 90vh;
+  padding: 2.5% 5%;
+  width: 100vw;
+}
+
 @media screen and (min-width: 1024px) {
   .bgImg button {
     display: none;
@@ -46,5 +52,11 @@ button:hover {
 
   .bgImg:hover button {
     display: block;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  section {
+    padding: 5%;
   }
 }

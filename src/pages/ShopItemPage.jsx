@@ -1,9 +1,19 @@
-import React from "react";
+// REACT
+import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
+// COMPONENT
 import PreviewCollections from "../components/PreviewCollections";
+// DATA
 import SHOP_DATA from "../assets/data/shopData";
 
 const ShopItemPage = () => {
+  document.title = "shop items";
+
+  useEffect(() => {
+    document.body.style.zoom = "100%";
+    window.scrollTo(0, 0);
+  });
+
   const params = useParams();
 
   const shopItem = SHOP_DATA.filter(
@@ -11,7 +21,7 @@ const ShopItemPage = () => {
   );
 
   return (
-    <section className="px-[5%] py-[2.5%] w-full">
+    <section>
       {shopItem.map((data) => (
         <PreviewCollections
           key={data.id}

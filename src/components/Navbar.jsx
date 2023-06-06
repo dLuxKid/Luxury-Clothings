@@ -1,10 +1,15 @@
-import React, { useState, useEffect } from "react";
-import { Icon } from "@iconify/react";
+// REACT
+import React from "react";
 import { NavLink } from "react-router-dom";
+// REDUX
 import { useDispatch, useSelector } from "react-redux";
-import useAuth from "../hooks/useAuth";
-import CartDropdown from "./CartDropdown";
 import { toggleCartDropdown } from "../redux store/cartStore/cartSlice";
+// HOOK
+import useAuth from "../hooks/useAuth";
+// COMPONENT
+import CartDropdown from "./CartDropdown";
+// ICON
+import { Icon } from "@iconify/react";
 
 const Navbar = () => {
   const navMenu =
@@ -13,6 +18,7 @@ const Navbar = () => {
   const user = useSelector((state) => state.auth.user);
   const showCart = useSelector((state) => state.cart.showCart);
   const totalQuantity = useSelector((state) => state.cart.totalQuantity);
+
   const dispatch = useDispatch();
 
   const { Logout } = useAuth();

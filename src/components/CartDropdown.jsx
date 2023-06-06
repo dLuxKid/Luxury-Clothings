@@ -1,12 +1,16 @@
+// REACT
 import React from "react";
+import { useNavigate } from "react-router-dom";
+// REDUX
 import { useDispatch, useSelector } from "react-redux";
 import { toggleCartDropdown } from "../redux store/cartStore/cartSlice";
-import { useNavigate } from "react-router-dom";
+// COMPONENTS
 import CartItem from "./CartItem";
 
 const CartDropdown = () => {
   const dispatch = useDispatch();
   const cartItems = useSelector((state) => state.cart.cartItems);
+
   const navigate = useNavigate();
 
   return (

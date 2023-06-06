@@ -1,9 +1,12 @@
+// REACT
 import React from "react";
+// REDUX
 import { useDispatch } from "react-redux";
 import { addToCart } from "../redux store/cartStore/cartSlice";
 
 const ShopItem = ({ item, preview }) => {
   const dispatch = useDispatch();
+
   return (
     <div
       key={item.id}

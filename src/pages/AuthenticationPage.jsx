@@ -1,17 +1,21 @@
+// REACT
 import React, { useState, useEffect } from "react";
+// COMPONENT
 import Login from "../components/Login";
 import Signup from "../components/Signup";
 
 const AuthenticationPage = () => {
-  document.title = "sign in";
+  document.title = "register";
+
   useEffect(() => {
     document.body.style.zoom = "100%";
     window.scrollTo(0, 0);
   });
 
   const [mode, setMode] = useState("login");
+
   return (
-    <section className="p-[5%] w-full h-screen">
+    <section>
       <div className="flex justify-center items-center gap-8 w-full p-2 mb-6">
         <h3
           onClick={() => setMode("login")}

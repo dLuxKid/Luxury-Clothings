@@ -1,14 +1,18 @@
+// REACT
 import React from "react";
-import { Icon } from "@iconify/react";
+// REDUX
+import { useDispatch } from "react-redux";
 import {
   addToCart,
   reduceFromCart,
   removeFromCart,
 } from "../redux store/cartStore/cartSlice";
-import { useDispatch } from "react-redux";
+// ICONS
+import { Icon } from "@iconify/react";
 
 const CheckoutItem = ({ item }) => {
-  const { imageUrl, name, quantity, price, id } = item;
+  const { imageUrl, name, quantity, price } = item;
+
   const dispatch = useDispatch();
   return (
     <div className="flex min-h-[100px] w-full border-b-[1px] border-slate-500 py-4 px-0 items-center ">

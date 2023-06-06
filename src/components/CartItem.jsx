@@ -1,3 +1,4 @@
+// REACT
 import React from "react";
 
 const CartItem = ({ item: { imageUrl, name, quantity, price } }) => {

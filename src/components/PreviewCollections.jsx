@@ -1,11 +1,14 @@
+// REACT
 import React from "react";
-import ShopItem from "./ShopItem";
 import { NavLink } from "react-router-dom";
+// COMPONENT
+import ShopItem from "./ShopItem";
 
 const PreviewCollections = ({ title, routeName, items, preview }) => {
   if (preview) {
     items = items.filter((item, index) => index < 4);
   }
+
   return (
     <div className="flex flex-col gap-2">
       <div className="flex flex-row justify-between items-center md:pr-4">

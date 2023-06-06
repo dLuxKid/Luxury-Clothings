@@ -1,4 +1,6 @@
+// REACT
 import React from "react";
+// ICON
 import { Icon } from "@iconify/react";
 
 const Footer = () => {
