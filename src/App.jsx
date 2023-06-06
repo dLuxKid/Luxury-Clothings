@@ -1,6 +1,6 @@
 import "./App.css";
 import Navbar from "./components/Navbar";
-import Routers from "./Routers/Routers";
+import Routers from "./routing/Routers";
 import Footer from "./components/Footer";
 import useAuth from "./hooks/useAuth";
 import { useEffect } from "react";
