@@ -1,10 +1,5 @@
-import React, { useCallback, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import {
-  addToCart,
-  removeFromCart,
-  reduceFromCart,
-} from "../redux store/cartStore/cartSlice";
+import React, { useCallback } from "react";
+import { useSelector } from "react-redux";
 import CheckoutItem from "../components/CheckoutItem";
 
 const CheckoutPage = () => {
@@ -49,7 +44,7 @@ const CheckoutPage = () => {
       {cartItems.map((cartItem) => (
         <CheckoutItem key={cartItem.id} item={cartItem} />
       ))}
-      <div className="mt-8 ml-auto text-lg sm:text-xl md:text-2xl lg:text-4xl">
+      <div className="my-8 ml-auto text-lg sm:text-xl md:text-2xl lg:text-4xl">
         TOTAL: <span>${calcTotalPrice()}</span>
       </div>
     </section>
