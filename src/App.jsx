@@ -5,6 +5,7 @@ import Footer from "./components/Footer";
 import useAuth from "./hooks/useAuth";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
+import { BrowserRouter } from "react-router-dom";
 
 function App() {
   const { checkAuthState } = useAuth();
@@ -23,9 +24,11 @@ function App() {
 
   return (
     <main className="max-w-full">
-      <Navbar />
-      <Routers />
-      <Footer />
+      <BrowserRouter>
+        <Navbar />
+        <Routers />
+        <Footer />
+      </BrowserRouter>
     </main>
   );
 }
