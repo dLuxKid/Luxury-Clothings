@@ -6,7 +6,7 @@ import ShopItem from "./ShopItem";
 
 const PreviewCollections = ({ title, routeName, items, preview }) => {
   if (preview) {
-    items = items.filter((item, index) => index < 4);
+    items = items.filter((item, index) => index < 3);
   }
 
   return (
