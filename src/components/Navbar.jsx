@@ -45,16 +45,17 @@ const Navbar = () => {
               <NavLink to="/authentication">SIGN IN</NavLink>
             </li>
           )}
-
-          <li
-            onClick={() => dispatch(toggleCartDropdown())}
-            className={`font-bold md:font-extrabold text-2xl md:text-3xl lg:text-4xl relative cursor-pointer`}
-          >
-            <Icon icon="ph:bag-light" />
-            <span className="absolute top-0 right-0 left-0 bottom-0  text-[10px] md:text-xs flex items-center justify-center text-center">
-              {totalQuantity}
-            </span>
-          </li>
+          {user?.uid && (
+            <li
+              onClick={() => dispatch(toggleCartDropdown())}
+              className={`font-bold md:font-extrabold text-2xl md:text-3xl lg:text-4xl relative cursor-pointer`}
+            >
+              <Icon icon="ph:bag-light" />
+              <span className="absolute top-0 right-0 left-0 bottom-0  text-[10px] md:text-xs flex items-center justify-center text-center">
+                {totalQuantity}
+              </span>
+            </li>
+          )}
         </ul>
         {showCart && <CartDropdown />}
       </div>
